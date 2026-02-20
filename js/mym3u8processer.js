@@ -249,8 +249,8 @@ var MyM3u8Processer = (function () {
         }
 
         const uniqueKey = data.originalContextId || MyUtils.genRandomString();
-		const downloadDirectory = chrome.i18n.getMessage("appName") + "-" + uniqueKey;
         const mediaName = MyUtils.buildMediaName(data.mediaName, data.reqConfig.url, parseResult.suffix);
+		const downloadDirectory = MyUtils.trimSuffix(mediaName) + "-" + uniqueKey.substring(0, 8);
         
         const context = MyBaseProcesser.saveDownloadContext({
             id: uniqueKey,
