@@ -38,11 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	//monitor
 	(function(){
-		document.getElementById("monitor-reload").onclick = function(e){
-			e.stopPropagation();
-			loadMonitoredMedia();
-		};
-		
 		document.getElementById("monitor-clean").onclick = function(e){
 			e.stopPropagation();
 			cleanMonitoredMedia();
@@ -226,6 +221,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				destroy && loadMonitoredMedia();
 			});
 		}
+		
+		loadMonitoredMedia();
+		setInterval(loadMonitoredMedia, 3000);
 	})();
 	
 	
@@ -311,13 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			
 		})();
 		
-	
-		document.getElementById("download-reload").onclick = function(e){
-			e.stopPropagation();
-			metricDownload();
-		}
-		
-		
+
 		function metricDownload(){
 			chrome.runtime.sendMessage({
 				action: "metricdownload"
@@ -538,6 +530,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         
+		metricDownload();
+		setInterval(metricDownload, 3000);
 	})();
 	
 	
@@ -704,11 +698,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	//running
 	(function(){
-		document.getElementById("running-reload").onclick = function(e){
-			e.stopPropagation();
-			loadRunningInfo();
-		};
-		
 		function loadRunningInfo(){
 			var contentDom = document.getElementById("running-content");
 			contentDom.innerHTML = "......";
@@ -728,6 +717,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				contentDom.innerHTML = html;
 			});
 		}
+		
+		loadRunningInfo();
+		setInterval(loadRunningInfo, 3000);
 	})();
 	
 });
