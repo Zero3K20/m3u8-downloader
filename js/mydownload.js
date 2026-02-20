@@ -28,6 +28,7 @@ var MyDownload = (function () {
                     task.control.url = task.options.url;
                     task.control.canResume = false;
                     task.control.target = task.target;
+                    task.control.hideInDownloadList = task.hideInDownloadList || false;
 				}
                 if(isUpdate){
                     for(var x in _queue){

@@ -19,6 +19,12 @@ var MyChromeDownload = (function () {
 		if (delta.state && delta.state.current == "complete") {
 			MyDownload.downloadingHolder.delete(delta.id);
 			MyDownload.downloadBatchHolder.complete(control.batchName);
+			if(control.hideInDownloadList){
+				chrome.downloads.erase({id: delta.id}, function(){
+					if(chrome.runtime.lastError){
+					}
+				});
+			}
 		}
 		
 		if (delta.state){
