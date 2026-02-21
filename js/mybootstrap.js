@@ -161,9 +161,10 @@ var MyBootstrap = (function () {
     
 	function _downloadOther(data){
         const uniqueKey = MyUtils.genRandomString();
-		let downloadDirectory = chrome.i18n.getMessage("appName") + "-" + uniqueKey;
-        downloadDirectory = MyChromeConfig.get("newFolderAtRoot") == "0" ? "" : downloadDirectory + "/";
         const mediaName = MyUtils.buildMediaName(data.mediaName, data.reqConfig.url, "");
+		let downloadDirectory = MyUtils.buildDownloadDirectory(mediaName, uniqueKey);
+        downloadDirectory = MyChromeConfig.get("newFolderAtRoot") == "0" ? "" : downloadDirectory + "/";
+        
 		
         MyBaseProcesser.saveDownloadContext({
             id: uniqueKey,
@@ -218,9 +219,10 @@ var MyBootstrap = (function () {
         }
         
         const uniqueKey = MyUtils.genRandomString();
-		let downloadDirectory = chrome.i18n.getMessage("appName") + "-" + uniqueKey;
-        downloadDirectory = MyChromeConfig.get("newFolderAtRoot") == "0" ? "" : downloadDirectory + "/";
         const mediaName = MyUtils.buildMediaName(data.mediaName, data.reqConfig.url, kind);
+		let downloadDirectory = MyUtils.buildDownloadDirectory(mediaName, uniqueKey);
+        downloadDirectory = MyChromeConfig.get("newFolderAtRoot") == "0" ? "" : downloadDirectory + "/";
+        
         
         MyBaseProcesser.saveDownloadContext({
             id: uniqueKey,

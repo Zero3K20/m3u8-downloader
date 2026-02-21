@@ -250,7 +250,7 @@ var MyM3u8Processer = (function () {
 
         const uniqueKey = data.originalContextId || MyUtils.genRandomString();
         const mediaName = MyUtils.buildMediaName(data.mediaName, data.reqConfig.url, parseResult.suffix);
-		const downloadDirectory = MyUtils.trimSuffix(mediaName) + "-" + uniqueKey.substring(0, 8);
+		const downloadDirectory = MyUtils.buildDownloadDirectory(mediaName, uniqueKey);
         
         const context = MyBaseProcesser.saveDownloadContext({
             id: uniqueKey,

@@ -271,6 +271,9 @@ var MyUtils = (function(){
             }else{
                 callback(null);
             }
+        },
+        buildDownloadDirectory: function(mediaName, uniqueKey){
+            return mediaName + "-" + uniqueKey;
         }
     };
 })();

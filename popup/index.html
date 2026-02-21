@@ -25,6 +25,7 @@
 			<div id="monitor-page" class="show">
 				<div>
 					<span id="monitor-count" class="badge" data-title="monitorMonitoredCount">-</span>
+                    <span class="badge badge-b" id="monitor-reload" data-msg="reload">reload</span>
 					<span class="badge badge-b" id="monitor-clean" data-msg="clean">clean</span>
                     <span>
                         <select id="monitor-filter" class="empty-select" data-title="filter" >
@@ -46,13 +47,11 @@
 					<input type="text" data-place="inputFileName" id="manual-name" />
 				</div>
 				<div>
-					<label data-title="manualM3u8Tip">
-					  <span class="not-select">m3u8</span>
-					  <input type="checkbox" id="manual-m3u8" />
-					</label>
+					<label class="not-select" data-msg="manualM3u8Tip">m3u8</label>
+					<input type="checkbox" id="manual-m3u8" />
 				</div>
                 <div>
-					<label class="not-select">method</label>
+					<label class="not-select" data-msg="manualMethod">method</label>
 					<select id="manual-method">
 					  <option value="GET">GET</option>
 					  <option value="POST">POST</option>
@@ -69,6 +68,7 @@
 					<span id="download-downloading-count" class="badge" data-title="downloadDlingCount">-</span>
 					<span class="badge badge-c" id="download-batch-show" data-msg="downloadBatchShow">batch</span>
 					<span id="download-batch-count" class="badge" data-title="downloadBatchCount">-</span>
+                    <span class="badge badge-b" id="download-reload" data-msg="reload" data-title="downloadReloadTip">reload</span>
                     <span><input type="text" id="download-copyholder" class="copyholder" /></span>
 				</div>
 				<div>
@@ -101,23 +101,23 @@
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsMonitorMax">mntmax</label>
-					<input type="number" step="1" min="1" max="200" value="1" id="settings-mntmax" />
+					<input type="number" step="1" min="1" max="200" id="settings-mntmax" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsDlingMax">dlingmax</label>
-					<input type="number" step="1" min="1" max="10" value="1" id="settings-dlingmax" />
+					<input type="number" step="1" min="1" max="10" id="settings-dlingmax" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsDlBatchMax">dlbtmax</label>
-					<input type="number" step="1" min="1" max="50" value="1" id="settings-dlbtmax" />
+					<input type="number" step="1" min="1" max="50" id="settings-dlbtmax" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsPopupWidth">popwidth</label>
-					<input type="number" step="20" min="462" max="4000" value="462" id="settings-popwidth" />
+					<input type="number" step="20" min="462" max="4000" id="settings-popwidth" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsPopupHeight">popheight</label>
-					<input type="number" step="20" min="435" max="3000" value="435" id="settings-popheight" />
+					<input type="number" step="20" min="435" max="3000" id="settings-popheight" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsPromptWhenExist">pwe</label>
@@ -137,7 +137,7 @@
 				</div>
 				<div>
                     <label class="not-select" data-msg="settingsProcesserThreshold">prothr</label>
-                    <input type="number" step="50" min="0" max="2000" value="500" id="settings-prothr" />
+                    <input type="number" step="50" min="0" max="2000" id="settings-prothr" />
 				</div>
                 <div>
                     <label class="not-select" data-msg="settingsDownloaderPageSize">dps</label>
@@ -150,6 +150,10 @@
                 <div>
                     <label class="not-select" data-msg="settingsBrokenSequence">bseq</label>
                     <input type="checkbox" id="settings-bseq" />
+				</div>
+                <div>
+                    <label class="not-select" data-msg="settingsAutoReload">ar</label>
+                    <input type="number" step="1" min="0" max="60" id="settings-ar" />
 				</div>
 				<div>
 					<label class="not-select" data-msg="settingsProxyAddress">pa</label>
@@ -168,6 +172,9 @@
 				
 			</div>
 			<div id="running-page" class="hide">
+                <div>
+					<span class="badge badge-b" id="running-reload" data-msg="reload">reload</span>
+				</div>
 				<div id="running-content">
 				</div>
 			</div>

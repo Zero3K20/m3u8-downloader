@@ -57,7 +57,7 @@
         "message": "input valid headers"
     },
     "manualM3u8Tip": {
-        "message": "whether to use m3u8 mode or not"
+        "message": "use m3u8 mode"
     },
     "clean": {
         "message": "clean"
@@ -180,7 +180,7 @@
         "message": "filter"
     },
     "settingsProcesserThreshold": {
-        "message": "the threshold (MB) of m3u8 processer mode"
+        "message": "the threshold (MB) of non-live m3u8 processer mode"
     },
     "settingsMatchingRule": {
         "message": "matching rule"
@@ -202,5 +202,11 @@
     },
     "settingsProxyAddress": {
         "message": "proxy address"
+    },
+    "settingsAutoReload": {
+        "message": "the interval seconds of auto-reload"
+    },
+    "manualMethod": {
+        "message": "request method"
     }
 }
