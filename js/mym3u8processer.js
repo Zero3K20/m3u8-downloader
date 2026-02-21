@@ -374,10 +374,38 @@ var MyM3u8Processer = (function () {
         }
     }
     
+    function _saveLiveDownloadByContextId(id){
+        const context = MyBaseProcesser.getDownloadContext(id);
+        if(context == null || ! context.isLive){
+            return;
+        }
+        let saveCount = 0;
+        for(let x = 0; x < context.parseResult.playList.length; x++){
+            if(context.parseResult.playList[x].content == null){
+                break;
+            }
+            saveCount = x + 1;
+        }
+        if(saveCount === 0){
+            return;
+        }
+        const allBytes = [];
+        for(let p = 0; p < saveCount; p++){
+            allBytes.push(context.parseResult.playList[p].content);
+        }
+        const suffix = MyUtils.getSuffix(context.mediaName, false);
+        const fileName = context.downloadDirectory + "/" + MyUtils.trimSuffix(context.mediaName) + "-" + Date.now() + (suffix ? "."+suffix : "");
+        _mergeContentImpl(allBytes, fileName, function(){
+            allBytes.splice(0);
+            MyVideox.playCompleteSound();
+        });
+    }
+    
     
     return {
         downloadM3u8: _downloadM3u8,
-        stopDownloadByContextId: _stopDownloadByContextId
+        stopDownloadByContextId: _stopDownloadByContextId,
+        saveLiveDownloadByContextId: _saveLiveDownloadByContextId
     };
     
 })();

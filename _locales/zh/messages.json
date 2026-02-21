@@ -202,5 +202,8 @@
     },
     "settingsProxyAddress": {
         "message": "代理地址"
+    },
+    "saveLive": {
+        "message": "保存"
     }
 }
