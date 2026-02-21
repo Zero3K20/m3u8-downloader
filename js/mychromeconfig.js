@@ -12,7 +12,7 @@ var MyChromeConfig = (function () {
 		monitoredQueueMax: 50,
 		downloadingMax: 3,
 		downloadBatchMax: 5,
-		popupWidth: 462,
+		popupWidth: 490,
 		popupHeight: 435,
 		promptWhenExist: "0",
 		newFolderAtRoot: "1",
