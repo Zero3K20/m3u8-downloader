@@ -9,7 +9,8 @@
 				url: chrome.runtime.getURL("popup/index.html"),
 				type: "popup",
 				width: config.popupWidth || 462,
-				height: config.popupHeight || 435
+				height: config.popupHeight || 435,
+				alwaysOnTop: true
 			}, function() {
 				window.close();
 			});
