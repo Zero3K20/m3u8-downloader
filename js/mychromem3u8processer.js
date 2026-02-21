@@ -101,7 +101,8 @@ var MyChromeM3u8Processer = (function () {
                     url: url,
                     filename: data.downloadDirectory + "/segment/" + fileName
                 },
-                target: "chrome"
+                target: "chrome",
+                hideInDownloadList: true
             }], 
             showName: fileName,
             priority: true
