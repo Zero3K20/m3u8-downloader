@@ -1,3 +1,22 @@
+(function() {
+	var views = chrome.extension.getViews({ type: "popup" });
+	if (views.indexOf(window) !== -1) {
+		chrome.runtime.sendMessage({ action: "getconfig" }, function(config) {
+			if (chrome.runtime.lastError || !config) {
+				return;
+			}
+			chrome.windows.create({
+				url: chrome.runtime.getURL("popup/index.html"),
+				type: "popup",
+				width: config.popupWidth || 462,
+				height: config.popupHeight || 435
+			}, function() {
+				window.close();
+			});
+		});
+	}
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
 	
 	//show ui
