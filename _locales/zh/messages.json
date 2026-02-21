@@ -6,7 +6,7 @@
         "message": "此插件支持监控和下载：m3u8流媒体、视频、音频"
     },
     "processerName": {
-        "message": "m3u8下载器 处理程序 - $1"
+        "message": "m3u8下载器 处理器 - $1"
     },
     "notificationYes": {
         "message": "是"
@@ -57,7 +57,7 @@
         "message": "输入合法的请求头"
     },
     "manualM3u8Tip": {
-        "message": "是否使用m3u8模式"
+        "message": "使用m3u8模式"
     },
     "clean": {
         "message": "清空"
@@ -180,7 +180,7 @@
         "message": "过滤"
     },
     "settingsProcesserThreshold": {
-        "message": "m3u8处理器模式的阈值（MB）"
+        "message": "非直播m3u8处理器模式的阈值（MB）"
     },
     "settingsMatchingRule": {
         "message": "匹配规则"
@@ -202,5 +202,11 @@
     },
     "settingsProxyAddress": {
         "message": "代理地址"
+    },
+    "settingsAutoReload": {
+        "message": "自动刷新的间隔秒数"
+    },
+    "manualMethod": {
+        "message": "请求方法"
     }
 }

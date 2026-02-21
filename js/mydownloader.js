@@ -219,7 +219,7 @@ var MyDownloader = (function () {
                     }
                     
                     // restart it from the beginning
-                    item.restart = (isResume && ! item.resumable) || (! isResume && useRangeMode && ! item.resumable && request.getStatus() != 200);
+                    item.restart = (item.rangeMode && ! resumable0) || (isResume && ! item.resumable) || (! isResume && useRangeMode && ! item.resumable && request.getStatus() != 200);
                     if(item.restart){
                         request.destroy();
                         if(! isResume && useRangeMode){

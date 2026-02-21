@@ -31,7 +31,7 @@
 | chrome/chromium版本 | 操作系统 | 支持功能 |
 |-------|------|------|
 | 99.0.4844.51以下 | 所有 | 未验证 |
-| 99.0.4844.51 | macOS Big Sur 11.6.4 | 不支持m3u8处理程序自动打开 |
+| 99.0.4844.51 | macOS Big Sur 11.6.4 | 不支持m3u8处理器自动打开 |
 | 99.0.4844.51以上 | 所有 | 未验证 |
 
 ## 使用教程
@@ -62,19 +62,19 @@ WeChat 1459669836
 
 输入保存的文件名（可选），点击 下载
 
-如果下载m3u8媒体，并且使用m3u8处理器模式（达到阈值），那么当下载完成时会下载m3u8处理程序
+如果下载m3u8媒体，并且使用m3u8处理器模式（非直播达到阈值或者直播），那么当下载完成时会下载m3u8处理器
 
 ![readme](https://raw.githubusercontent.com/yangwk/m3u8-downloader/master/readme/05.PNG)
 
-保留m3u8处理程序
+保留m3u8处理器
 
 ![readme](https://raw.githubusercontent.com/yangwk/m3u8-downloader/master/readme/06.PNG)
 
-通知打开m3u8处理程序，点击 是
+通知打开m3u8处理器，点击 是
 
 ![readme](https://raw.githubusercontent.com/yangwk/m3u8-downloader/master/readme/07.PNG)
 
-m3u8处理程序处理完毕后，自动打开处理后的文件所处位置
+m3u8处理器处理完毕后，自动打开处理后的文件所处位置
 
 ![readme](https://raw.githubusercontent.com/yangwk/m3u8-downloader/master/readme/08.PNG)
 
@@ -104,7 +104,7 @@ m3u8处理程序处理完毕后，自动打开处理后的文件所处位置
 
 * 为了避免糟糕的下载体验，请关闭浏览器选项 设置 -> 高级 -> 下载内容 -> 下载前询问每个文件的保存位置
 
-* 使用m3u8处理器模式下载m3u8媒体，浏览器提示m3u8处理程序是一个有风险的文件，该处理程序安全可靠，请保留该文件，让下载继续
+* 使用m3u8处理器模式下载m3u8媒体，浏览器提示m3u8处理器是一个有风险的文件，该处理器安全可靠，请保留该文件，让下载继续
 
 ## 特殊技巧
 

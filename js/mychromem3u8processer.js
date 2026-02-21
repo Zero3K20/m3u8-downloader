@@ -62,7 +62,8 @@ var MyChromeM3u8Processer = (function () {
                         options: {
                             url: data.reqConfig.url,
                             filename: data.downloadDirectory + "/m3u8/" + m3u8Name,
-                            method: data.reqConfig.method
+                            method: data.reqConfig.method,
+                            headers: data.reqConfig.headers
                         },
                         target: "chrome",
                         proxy: true

@@ -38,6 +38,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	//monitor
 	(function(){
+        let _autoReloadIntervalId = null;
+        
+        document.getElementById("monitor-reload").onclick = function(e){
+			e.stopPropagation();
+			loadMonitoredMedia();
+		};
+        document.getElementById("monitor-reload").addEventListener("autoReload", (e) => {
+            if(_autoReloadIntervalId != null){
+                clearInterval(_autoReloadIntervalId);
+                _autoReloadIntervalId = null;
+            }
+            const delay = e.data.delay;
+            if(delay > 0){
+                _autoReloadIntervalId = setInterval(function(){
+                    loadMonitoredMedia();
+                }, delay);
+            }
+        });
+        
 		document.getElementById("monitor-clean").onclick = function(e){
 			e.stopPropagation();
 			cleanMonitoredMedia();
@@ -222,8 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		}
 		
-		loadMonitoredMedia();
-		setInterval(loadMonitoredMedia, 3000);
 	})();
 	
 	
@@ -309,7 +326,26 @@ document.addEventListener("DOMContentLoaded", function () {
 			
 		})();
 		
-
+        let _autoReloadIntervalId = null;
+        
+        document.getElementById("download-reload").onclick = function(e){
+			e.stopPropagation();
+			metricDownload();
+		}
+        document.getElementById("download-reload").addEventListener("autoReload", (e) => {
+            if(_autoReloadIntervalId != null){
+                clearInterval(_autoReloadIntervalId);
+                _autoReloadIntervalId = null;
+            }
+            const delay = e.data.delay;
+            if(delay > 0){
+                _autoReloadIntervalId = setInterval(function(){
+                    metricDownload();
+                }, delay);
+            }
+        });
+		
+		
 		function metricDownload(){
 			chrome.runtime.sendMessage({
 				action: "metricdownload"
@@ -380,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         function metricDownloadDownloadingChrome(contentDom, obj){
             var dom = document.createElement("div");
-            var html = '<hr/><span class="badge badge-name" data-title="fileName">' + obj.fileName + '</span>';
+            var html = '<hr/><span class="badge badge-name" title="' + obj.batchShowName + '">' + obj.fileName + '</span>';
             dom.innerHTML = html;
             
             var dom2 = document.createElement("span");
@@ -466,7 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             const itemDom = document.createElement("div");
-            itemDom.innerHTML = '<hr/><div class="line-wrapping">' + data.url + '</div>';
+            itemDom.innerHTML = '<hr/><div class="line-wrapping" title="' + obj.batchShowName + '">' + data.url + '</div>';
             const statusDom = document.createElement("div");
             statusDom.className = "line-wrapping";
             const progressDom1 = document.createElement("div");
@@ -530,8 +566,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         
-		metricDownload();
-		setInterval(metricDownload, 3000);
 	})();
 	
 	
@@ -543,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				action: "getconfig"
 			}, function(response){
 				var data = response;
-				windowResize(data.popupWidth, data.popupHeight);
+				repaintByConfig(data);
 				var senv = document.getElementById("settings-environment");
 				for(var s=0; s<senv.length; s++){
 					if(senv[s].value == data.environment){
@@ -566,12 +600,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("settings-dps").value = data.downloaderPageSize;
                 document.getElementById("settings-cs").checked = data.convertSubtitles == "1";
                 document.getElementById("settings-bseq").checked = data.stopBrokenSequence == "1";
+                document.getElementById("settings-ar").value = data.autoReload;
                 document.getElementById("settings-paenable").checked = data.proxyAddressEnable == "1";
                 document.getElementById("settings-pa").value = data.proxyAddress;
                 document.getElementById("settings-mrenable").checked = data.matchingRuleEnable == "1";
                 document.getElementById("settings-mr").value = data.matchingRule;
 			});
-		}
+        }
 		
 		init();
 		
@@ -580,7 +615,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const pnh = MyUtils.outerHeight( document.getElementById("page-nav") );
 			document.getElementById("page-wrapper").style.maxHeight = (h-pnh) + "px";
 		}
-		
+        
+        function doAutoReload(ar){
+            const reloads = ["monitor-reload", "download-reload", "running-reload"];
+            for(let x in reloads){
+                const ev = new Event("autoReload");
+                ev.data = { delay: ar * 1000 };
+                document.getElementById(reloads[x]).dispatchEvent(ev);
+            }
+        }
+        
+        function repaintByConfig(data){
+            windowResize(data.popupWidth, data.popupHeight);
+            doAutoReload(data.autoReload);
+        }
 		
 		document.querySelectorAll('input[type="number"]').forEach(function(dom){
             if(dom.id == "settings-dps"){
@@ -611,6 +659,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.downloaderPageSize = Math.min( Math.max( parseInt(document.getElementById("settings-dps").value, 10), 1024 ), 1024 * 1024 * 1024 );
             data.convertSubtitles = document.getElementById("settings-cs").checked ? "1" : "0";
             data.stopBrokenSequence = document.getElementById("settings-bseq").checked ? "1" : "0";
+            data.autoReload = parseInt(document.getElementById("settings-ar").value, 10);
             data.proxyAddressEnable = document.getElementById("settings-paenable").checked ? "1" : "0";
             data.proxyAddress = document.getElementById("settings-pa").value.trim();
             data.matchingRuleEnable = document.getElementById("settings-mrenable").checked ? "1" : "0";
@@ -620,7 +669,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					action: "updateconfig",
 					data: data
 				}, function(response){
-				windowResize(data.popupWidth, data.popupHeight);
+				repaintByConfig(data);
 			});
 		};
         
@@ -698,6 +747,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	//running
 	(function(){
+        let _autoReloadIntervalId = null;
+        
+        document.getElementById("running-reload").onclick = function(e){
+			e.stopPropagation();
+			loadRunningInfo();
+		};
+        document.getElementById("running-reload").addEventListener("autoReload", (e) => {
+            if(_autoReloadIntervalId != null){
+                clearInterval(_autoReloadIntervalId);
+                _autoReloadIntervalId = null;
+            }
+            const delay = e.data.delay;
+            if(delay > 0){
+                _autoReloadIntervalId = setInterval(function(){
+                    loadRunningInfo();
+                }, delay);
+            }
+        });
+        
 		function loadRunningInfo(){
 			var contentDom = document.getElementById("running-content");
 			contentDom.innerHTML = "......";
@@ -718,8 +786,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		}
 		
-		loadRunningInfo();
-		setInterval(loadRunningInfo, 3000);
 	})();
 	
 });

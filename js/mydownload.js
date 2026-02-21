@@ -29,6 +29,7 @@ var MyDownload = (function () {
                     task.control.canResume = false;
                     task.control.target = task.target;
                     task.control.hideInDownloadList = task.hideInDownloadList || false;
+                    task.control.batchShowName = copyTaskData.showName;
 				}
                 if(isUpdate){
                     for(var x in _queue){
@@ -97,6 +98,7 @@ var MyDownload = (function () {
 			saveId: function(batchName, id){
 				for(var x in _queue){
 					if(_queue[x].batchName == batchName){
+                        // XXX live m3u8 will continue to grow
 						_queue[x].downloadIds.push(id);
 						return true;
 					}
@@ -170,7 +172,8 @@ var MyDownload = (function () {
 				id: id,
 				fileName: control.fileName,
 				canResume: control.canResume,
-                url: control.url
+                url: control.url,
+                batchShowName: control.batchShowName
 			});
 		});
 		var downloadBatches = [];
