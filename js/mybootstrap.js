@@ -88,6 +88,9 @@ var MyBootstrap = (function () {
 			}else if(request.action == "stopm3u8livedownload"){
                 MyM3u8Processer.stopDownloadByContextId(request.data.id);
                 sendResponse({success: true});
+            }else if(request.action == "savem3u8livedownload"){
+                MyM3u8Processer.saveLiveDownloadByContextId(request.data.id);
+                sendResponse({success: true});
             }
 		});
         

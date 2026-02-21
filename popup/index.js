@@ -353,6 +353,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     dom2.dataset["contextId"] = obj.attributes.contextId;
                     dom2.addEventListener("click", stopM3u8LiveDownload, { once: true });
                     dom.appendChild(dom2);
+                    
+                    var dom3 = document.createElement("span");
+                    dom3.innerHTML = '<span class="badge badge-b" data-msg="saveLive">saveLive</span>';
+                    dom3.dataset["contextId"] = obj.attributes.contextId;
+                    dom3.addEventListener("click", saveM3u8LiveDownload);
+                    dom.appendChild(dom3);
                 }
 			}
 		}
@@ -362,6 +368,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			var contextId = this.dataset["contextId"];
 			chrome.runtime.sendMessage({
 				action: "stopm3u8livedownload",
+				data: {
+					id: contextId
+				}
+			}, function(response){
+			});
+		}
+		
+		function saveM3u8LiveDownload(e){
+			e.stopPropagation();
+			var contextId = this.dataset["contextId"];
+			chrome.runtime.sendMessage({
+				action: "savem3u8livedownload",
 				data: {
 					id: contextId
 				}

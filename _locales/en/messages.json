@@ -202,5 +202,8 @@
     },
     "settingsProxyAddress": {
         "message": "proxy address"
+    },
+    "saveLive": {
+        "message": "save"
     }
 }

@@ -103,37 +103,26 @@ var MyM3u8Processer = (function () {
     }
     
     function _doChromeM3u8(context, callback){
-        if(context.parseResult.playList.length == 0){
-            chromeM3u8Complete();
-            return ;
-        }
         for(let x=context.chromeM3u8.index; x < context.parseResult.playList.length; x++){
             if(context.parseResult.playList[x].content == null){
                 context.chromeM3u8.index = x;
-                callback && callback();
-                return ;
-            }
-            MyChromeM3u8Processer.downloadM3u8Ts(context.chromeM3u8.data, context.parseResult.playList[x], function(){
-                context.chromeM3u8.completedCnt ++;
-                chromeM3u8Complete();
-            });
-        }
-        
-        function chromeM3u8Complete(){
-            if(context.chromeM3u8.completedCnt >= context.playListCnt){
-                context.parseResult.playList.splice(0);
-                context.chromeM3u8.index = 0;
-                if(context.isEnd){
-                    if(context.isLive){
-                        context.parseResult.discontinuity = [{ start: 0, end: context.playListCnt-1 }];
-                    }
-                    MyChromeM3u8Processer.downloadM3u8Basic(context.chromeM3u8.data, context.parseResult, context.playListCnt, function(processerId){
-                        MyChromeM3u8Processer.openM3u8Processer(context.chromeM3u8.data, processerId);
-                    });
+                if(context.isLive && callback === undefined && context.chromeM3u8.index > 0){
+                    context.playListCnt = context.chromeM3u8.index;
+                    _mergeContent(context);
+                } else {
+                    callback && callback();
                 }
-                callback && callback();
+                return;
             }
+            context.chromeM3u8.index = x + 1;
         }
+        if(context.isEnd){
+            if(context.isLive){
+                context.playListCnt = context.chromeM3u8.index;
+            }
+            _mergeContent(context);
+        }
+        callback && callback();
     }
     
     
@@ -358,10 +347,7 @@ var MyM3u8Processer = (function () {
     
         
     function purgeContext(context){
-        if(context.useChromeM3u8){
-            context.playListCnt = context.chromeM3u8.completedCnt;
-            context.parseResult.playList.splice(0);
-        }else{
+        if(! context.useChromeM3u8){
             context.playListCnt = context.completedCnt;
         }
     }
@@ -388,10 +374,38 @@ var MyM3u8Processer = (function () {
         }
     }
     
+    function _saveLiveDownloadByContextId(id){
+        const context = MyBaseProcesser.getDownloadContext(id);
+        if(context == null || ! context.isLive){
+            return;
+        }
+        let saveCount = 0;
+        for(let x = 0; x < context.parseResult.playList.length; x++){
+            if(context.parseResult.playList[x].content == null){
+                break;
+            }
+            saveCount = x + 1;
+        }
+        if(saveCount === 0){
+            return;
+        }
+        const allBytes = [];
+        for(let p = 0; p < saveCount; p++){
+            allBytes.push(context.parseResult.playList[p].content);
+        }
+        const suffix = MyUtils.getSuffix(context.mediaName, false);
+        const fileName = context.downloadDirectory + "/" + MyUtils.trimSuffix(context.mediaName) + "-" + Date.now() + (suffix ? "."+suffix : "");
+        _mergeContentImpl(allBytes, fileName, function(){
+            allBytes.splice(0);
+            MyVideox.playCompleteSound();
+        });
+    }
+    
     
     return {
         downloadM3u8: _downloadM3u8,
-        stopDownloadByContextId: _stopDownloadByContextId
+        stopDownloadByContextId: _stopDownloadByContextId,
+        saveLiveDownloadByContextId: _saveLiveDownloadByContextId
     };
     
 })();
