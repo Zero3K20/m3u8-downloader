@@ -92,6 +92,15 @@ var MyBootstrap = (function () {
 		});
         
         _updateIcon(! MyChromeMediaMonitor.isEmpty() );
+
+		chrome.browserAction.onClicked.addListener(function(){
+			chrome.windows.create({
+				url: chrome.runtime.getURL("popup/index.html"),
+				type: "popup",
+				width: MyChromeConfig.get("popupWidth"),
+				height: MyChromeConfig.get("popupHeight")
+			});
+		});
 	}
 	
 	
