@@ -66,16 +66,18 @@ var MyM3u8Processer = (function () {
                 fileName = context.mediaName;
             }
             
+            // _mergeContentImpl creates the Blob synchronously, so the source data
+            // (allBytes and playList[p].content) can be freed immediately after the
+            // call returns — the Blob holds its own copy.
             _mergeContentImpl(allBytes, fileName, function(){
-                allBytes.splice(0);
-                for(let p=discontinuity[d].start; p<=discontinuity[d].end; p++){
-                    context.parseResult.playList[p].content = null;
-                }
-                
                 if(++doneCount >= discontinuity.length){
                     context.mergeCallback();
                 }
             });
+            allBytes.splice(0);
+            for(let p=discontinuity[d].start; p<=discontinuity[d].end; p++){
+                context.parseResult.playList[p].content = null;
+            }
         }
         
     }

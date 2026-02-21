@@ -91,6 +91,10 @@ var MyChromeM3u8Processer = (function () {
     function _downloadM3u8Ts(data, playItem, callback){
         const allBytes = [ playItem.content ];
         const blob = new Blob(allBytes, {type: "text/plain"}); // faster Chrome security check
+        // Blob construction is synchronous and copies the data, so the source can be
+        // freed immediately to halve peak memory usage.
+        allBytes.splice(0);
+        playItem.content = null;
         
         const url = URL.createObjectURL(blob);
         var fileName = data.uniqueKey + "-" + MyUtils.padStart(playItem.logicSequence.toString(), 10,"0") + ".ts";
@@ -107,9 +111,6 @@ var MyChromeM3u8Processer = (function () {
             priority: true
         }, function(){
             URL.revokeObjectURL(url);
-            
-            allBytes.splice(0);
-            playItem.content = null;
             
             callback();
         });
