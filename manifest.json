@@ -12,7 +12,7 @@
         "default_icon": {
             "128": "img/icon128.png"
         },
-		"default_popup": "popup/index.html"
+        "default_popup": "popup/index.html"
     },
     "background": {
         "scripts": ["js/myutils.js", "js/myreader.js",
