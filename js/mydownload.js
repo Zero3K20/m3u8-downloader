@@ -178,6 +178,9 @@ var MyDownload = (function () {
 		});
 		var downloadBatches = [];
 		_downloadBatchHolder.forEach(function(batch){
+			if(batch.mustCompleteCnt <= 1){
+				return;
+			}
 			downloadBatches.push({
 				showName: batch.showName,
 				waitCnt: batch.tasks.length,
