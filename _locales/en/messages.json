@@ -208,8 +208,5 @@
     },
     "manualMethod": {
         "message": "Request Method"
-    },
-    "saveLive": {
-        "message": "Save"
     }
 }
