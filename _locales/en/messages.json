@@ -203,6 +203,9 @@
     "settingsProxyAddress": {
         "message": "Proxy Address"
     },
+    "saveLive": {
+        "message": "Save"
+    },
     "settingsAutoReload": {
         "message": "The interval seconds of auto-reload"
     },
