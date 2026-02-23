@@ -1,212 +1,215 @@
 {
     "appName": {
-        "message": "m3u8 downloader"
+        "message": "M3U8 Downloader"
     },
     "appDescription": {
         "message": "This extension can monitor and download m3u8 stream, and video, audio media."
     },
     "processerName": {
-        "message": "m3u8 downloader processer - $1"
+        "message": "M3U8 Downloader Processer - $1"
     },
     "notificationYes": {
-        "message": "yes"
+        "message": "Yes"
     },
     "notificationNo": {
-        "message": "no"
+        "message": "No"
     },
     "notificationOpenDownload": {
-        "message": "open the file $1 ?"
+        "message": "Open the file $1 ?"
     },
     "nothing": {
-        "message": "nothing"
+        "message": "Nothing"
     },
     "monitor": {
-        "message": "monitor"
+        "message": "Monitor"
     },
     "manual": {
-        "message": "manual"
+        "message": "Manual"
     },
     "download": {
-        "message": "download"
+        "message": "Download"
     },
     "settings": {
-        "message": "settings"
+        "message": "Settings"
     },
     "monitorMonitoredCount": {
-        "message": "monitored count"
+        "message": "Monitored count"
     },
     "reload": {
-        "message": "reload"
+        "message": "Reload"
     },
     "url": {
         "message": "URL"
     },
     "monitorFromTab": {
-        "message": "from tab"
+        "message": "From Tab"
     },
     "inputFileName": {
-        "message": "input the name of the file to be saved"
+        "message": "Input the name of the file to be saved"
     },
     "delete": {
-        "message": "delete"
+        "message": "Delete"
     },
     "inputValidURL": {
-        "message": "input a valid URL"
+        "message": "Input a valid URL"
     },
     "inputValidHeaders": {
-        "message": "input valid headers"
+        "message": "Input valid headers"
     },
     "manualM3u8Tip": {
-        "message": "use m3u8 mode"
+        "message": "Use m3u8 mode"
     },
     "clean": {
-        "message": "clean"
+        "message": "Clean"
     },
     "downloadDlingShow": {
-        "message": "downloading task"
+        "message": "Downloading Task"
     },
     "downloadDlingCount": {
-        "message": "downloading task count"
+        "message": "Downloading task count"
     },
     "downloadBatchShow": {
-        "message": "batch"
+        "message": "Batch"
     },
     "downloadBatchCount": {
-        "message": "batch count"
+        "message": "Batch count"
     },
     "fileName": {
-        "message": "the name of file"
+        "message": "File name"
     },
     "cancel": {
-        "message": "cancel"
+        "message": "Cancel"
     },
     "downloadDatchName": {
-        "message": "the name of batch"
+        "message": "Batch name"
     },
     "downloadTaskWaitCnt": {
-        "message": "waiting tasks count"
+        "message": "Waiting tasks count"
     },
     "downloadTaskCompletedCnt": {
-        "message": "completed tasks count"
+        "message": "Completed tasks count"
     },
     "downloadTaskTriggeredCnt": {
-        "message": "triggered tasks count"
+        "message": "Triggered tasks count"
     },
     "downloadTaskSum": {
-        "message": "total number of task"
+        "message": "Total number of tasks"
     },
     "settingsEnvironment": {
-        "message": "simulation environment"
+        "message": "Simulation Environment"
     },
     "settingsEnvironmentPC": {
-        "message": "pc"
+        "message": "PC"
     },
     "settingsEnvironmentMobile": {
-        "message": "mobile"
+        "message": "Mobile"
     },
     "settingsShowTab": {
-        "message": "the monitored details show tab information"
+        "message": "The monitored details show tab information"
     },
     "settingsMonitorMax": {
-        "message": "maximum number of the monitored"
+        "message": "Maximum number of the monitored"
     },
     "settingsDlingMax": {
-        "message": "maximum number of downloading task"
+        "message": "Maximum number of downloading tasks"
     },
     "settingsDlBatchMax": {
-        "message": "maximum number of download batch"
+        "message": "Maximum number of download batches"
     },
     "settingsPopupWidth": {
-        "message": "extension popup max width in pixel"
+        "message": "Extension popup max width in pixel"
     },
     "settingsPopupHeight": {
-        "message": "extension popup max height in pixel"
+        "message": "Extension popup max height in pixel"
     },
     "submit": {
-        "message": "submit"
+        "message": "Submit"
     },
 	"copyUrl": {
-        "message": "copy URL"
+        "message": "Copy URL"
     },
 	"settingsPopupInTab": {
-        "message": "open the extension popup in tab"
+        "message": "Open the extension popup in tab"
     },
 	"settingsShowDuration": {
-        "message": "the monitored details show duration"
+        "message": "The monitored details show duration"
     },
 	"duration": {
-        "message": "duration"
+        "message": "Duration"
     },
 	"running": {
-        "message": "running"
+        "message": "Running"
     },
 	"resume": {
-        "message": "resume"
+        "message": "Resume"
     },
 	"settingsPromptWhenExist": {
-        "message": "prompt when filename exist"
+        "message": "Prompt when filename exists"
     },
 	"settingsNewFolderAtRoot": {
-        "message": "create subdirectory at download root folder"
+        "message": "Create subdirectory at download root folder"
     },
 	"settingsPlaySoundWhenComplete": {
-        "message": "play sound when complete"
+        "message": "Play sound when complete"
     },
 	"settingsSplitDiscontinuity": {
-        "message": "split to handle discontinuity m3u8 playlist"
+        "message": "Split to handle discontinuity m3u8 playlist"
     },
 	"pause": {
-        "message": "pause"
+        "message": "Pause"
     },
     "restart": {
-        "message": "restart"
+        "message": "Restart"
     },
     "downloadTotal": {
-        "message": "total"
+        "message": "Total"
     },
     "downloadRemaining": {
-        "message": "remaining"
+        "message": "Remaining"
     },
     "second": {
         "message": "second"
     },
     "downloadError": {
-        "message": "network error"
+        "message": "Network Error"
     },
     "downloadReloadTip": {
-        "message": "reload before each operation"
+        "message": "Reload before each operation"
     },
     "filter": {
-        "message": "filter"
+        "message": "Filter"
     },
     "settingsProcesserThreshold": {
-        "message": "the threshold (MB) of non-live m3u8 processer mode"
+        "message": "The threshold (MB) of non-live m3u8 processer mode"
     },
     "settingsMatchingRule": {
-        "message": "matching rule"
+        "message": "Matching Rule"
     },
     "settingsDownloaderPageSize": {
-        "message": "the page size (byte) of downloader"
+        "message": "The page size (byte) of downloader"
     },
     "settingsConvertSubtitles": {
-        "message": "convert subtitles"
+        "message": "Convert Subtitles"
     },
     "live": {
-        "message": "live"
+        "message": "Live"
     },
     "stopLive": {
-        "message": "stop live"
+        "message": "Stop Live"
     },
     "settingsBrokenSequence": {
-        "message": "stop live downloads if broken sequence"
+        "message": "Stop live downloads if broken sequence"
     },
     "settingsProxyAddress": {
-        "message": "proxy address"
+        "message": "Proxy Address"
+    },
+    "saveLive": {
+        "message": "Save"
     },
     "settingsAutoReload": {
-        "message": "the interval seconds of auto-reload"
+        "message": "The interval seconds of auto-reload"
     },
     "manualMethod": {
-        "message": "request method"
+        "message": "Request Method"
     }
 }
