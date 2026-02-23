@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				action: "downloadmonitoredmedia",
 				data: {
                     identifier: identifier,
-                    destroy: destroy,
+                    destroy: true,
                     urlMaster: urlMaster,
                     isDirect: isDirect,
 					mediaName: mediaName,
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     mediaType: mediaType
 				}
 			}, function(response){
-				destroy && loadMonitoredMedia();
+				loadMonitoredMedia();
 			});
 		}
 		
